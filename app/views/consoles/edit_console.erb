@@ -1,8 +1,14 @@
-<h2>Edit Console(name)</h2>
+<h2>Edit Console: <%= @console.name %></h2>
 
-Form to post edit to console id
+<form method="post" action="/consoles/<%= @console.id %>">
     <label>Console Name</label>
-    <input type="text" name="name" value="Console.Name"><br>
+    <input type="text" name="name" value="<%= @console.name %>"><br>
+    <label>Console Company</label>
+    <input type="text" name="company" value="<%= @console.company %>"><br>
 
     <input type="submit" value="Update Console">
-End Form
+</form>
+<form method="post" action="/consoles/<%= @console.id %>/delete">
+    <input type="hidden" id="hidden" name="_method" value="Delete">
+    <input type="submit" value="delete console">
+</form>

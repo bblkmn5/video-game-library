@@ -21,6 +21,8 @@ class ConsolesController < ApplicationController
             redirect '/consoles'
         else
             @console = Console.create(params)
+            @console.user_id = current_user.id
+            @console.save
             redirect "/consoles/#{@console.id}"
         end
     end
@@ -51,7 +53,22 @@ class ConsolesController < ApplicationController
     get '/consoles/:id/edit' do
         if logged_in?
             @console = Console.find(params[:id])
-            erb "/consoles/edit_console"
+            erb :"/consoles/edit_console"
+        else
+            redirect '/login'
+        end
+    end
+
+    delete '/consoles/:id/delete' do
+        if logged_in?
+            console = Console.find(params[:id])
+            binding.pry
+            if console.user_id == current_user.id
+                console.destroy
+                redirect '/consoles'
+            else
+                redirect "/consoles/#{console.id}"
+            end
         else
             redirect '/login'
         end

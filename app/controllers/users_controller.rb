@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     get '/signup' do
-        if !logged_in?
+        if !session[:user_id]
             erb :'/users/create_user'
         else
             redirect '/consoles' 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do
-        if logged_in?
+        if !session[:user_id] != nil
             session.clear
             redirect '/login'
         else
