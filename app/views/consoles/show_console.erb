@@ -1,9 +1,10 @@
-<h2>Show Console.name</h2>
+<h2><%= @console.name %></h2>
+<h4>Manufactured by: <%= @console.company %></h4>
 
 <h3>Games</h3>
 
 Show each Game's name and ESRB rating
 
 <br>
-link to go to edit console page
+<a href="/consoles/<%= @console.id %>/edit">Edit</a><br>
 <br>

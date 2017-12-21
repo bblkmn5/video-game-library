@@ -8,12 +8,12 @@
         <h1>Welcome to the Video Game Library!</h1>
         <div>
             <% if logged_in? %>
-                View Library(console) link
-                View Games link
-                Add Console link
-                Add Game link
-                Logout link
-                <h4>Welcome to your Video Game Library, (Username)</h4>
+                <a href="/consoles">View Library</a>
+                <a href="/games">View Games</a>
+                <a href="/consoles/new">Add Console</a>
+                <a href="/games/new">Add Game</a>
+                <a href="/logout">Log Out</a>
+                <h4>Welcome to your Video Game Library, <%= current_user.username %></h4>
             
             <% else %>
                 <a href="/signup">Sign Up</a>

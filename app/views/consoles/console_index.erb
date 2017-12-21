@@ -1,5 +1,6 @@
 <h2>Your Consoles</h2>
 
-View Your Consoles Once added
-    link to console to view games
-    link to console to edit
+<% @consoles.each do |console| %>
+    <p><a href="/consoles/<%= console.id %>"><%= console.name %></a>
+    Manufactured by: <%= console.company %></p><br>
+<% end %>

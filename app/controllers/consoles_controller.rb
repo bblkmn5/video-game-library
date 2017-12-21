@@ -1,6 +1,60 @@
 class ConsolesController < ApplicationController
     get '/consoles' do
-        "Hello, Consoles!"
+        if logged_in?
+            @consoles = Console.all
+            erb :'/consoles/console_index'
+        else
+            redirect '/login'
+        end
+    end
+
+    get '/consoles/new' do
+        if logged_in?
+            erb :'/consoles/create_console'
+        else
+            redirect '/login'
+        end
+    end
+
+    post '/consoles' do
+        if params[:name] == "" || params[:company] == ""
+            redirect '/consoles'
+        else
+            @console = Console.create(params)
+            redirect "/consoles/#{@console.id}"
+        end
+    end
+
+    get '/consoles/:id' do
+        if logged_in?
+            @console = Console.find(params[:id])
+            erb :'/consoles/show_console'
+        else
+            redirect '/login'
+        end
+    end
+
+    post "/consoles/:id" do
+        if logged_in?
+            @console = Console.find(params[:id])
+            if !@console.errors.any?
+                @console.update(params.select {|c| c == "name" || c == "company"})
+                redirect "/consoles/#{@console.id}"
+            else
+                redirect '/login'
+            end
+        else
+            redirect '/login'
+        end
+    end
+
+    get '/consoles/:id/edit' do
+        if logged_in?
+            @console = Console.find(params[:id])
+            erb "/consoles/edit_console"
+        else
+            redirect '/login'
+        end
     end
 
 end
