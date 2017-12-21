@@ -10,8 +10,20 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        "Hello World!"
+        if logged_in?
+            redirect '/consoles'
+        else
+            erb :index
+        end
     end
     
+    helpers do
+        def logged_in?
+            !!current_user
+        end
 
+        def current_user
+            @current_user ||= User.find(session[:user_id]) if session[:user_id]
+        end
+    end
 end

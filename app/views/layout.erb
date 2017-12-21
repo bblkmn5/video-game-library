@@ -16,14 +16,12 @@
                 <h4>Welcome to your Video Game Library, (Username)</h4>
             
             <% else %>
-                Sign Up link
-                Login/Sign In link
+                <a href="/signup">Sign Up</a>
+                <a href="/login">Login</a>
             <% end %>
         </div>
 
-        <% yield %>
-
-        Error Message location?
+        <%= yield %>
 
     </body>
 </html>
