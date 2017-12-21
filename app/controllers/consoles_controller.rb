@@ -43,7 +43,7 @@ class ConsolesController < ApplicationController
                 @console.update(params.select {|c| c == "name" || c == "company"})
                 redirect "/consoles/#{@console.id}"
             else
-                redirect '/login'
+                redirect '/consoles'
             end
         else
             redirect '/login'

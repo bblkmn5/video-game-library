@@ -13,3 +13,8 @@ Form to post edit to game by id
 
     <input type="submit" value="Update Game">
 End Form
+
+<form method="delete" action="/games/<%= @game.id %>/delete">
+    <input type="hidden" id="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Game">
+</form>

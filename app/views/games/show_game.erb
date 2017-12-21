@@ -1,9 +1,6 @@
-Print Out Game Name
-Game ESRB Rating
-<br>
-Console it belongs to
+<h2><%= @game.name %></h2>
+<h4>Rating: <%= @game.esrb_rating %></h4>
 
-Form to post deletion of Game
-    <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Game">
-End Form
+<h4>For the <%= @game.console.name %></h4>
+<a href="/games/<%= @game.id %>/edit">Edit Game</a>
+

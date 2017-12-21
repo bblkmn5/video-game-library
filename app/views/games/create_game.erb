@@ -1,13 +1,25 @@
 <h2>Add New Game</h2>
 
-Form to post new Game
+<form method="post" action="/games">
     <label>Game Name:</label>
-    <input type="text" name="name"><br>
+    <input type="text" name="name"><br><br>
 
     <label>ESRB Rating:</label>
-    List of ESRB Rating Options
-    <br>
+    <select name="esrb_rating">
+        <option value="EC">EC (Early Childhood)</option>
+        <option value="E">E (Everyone)</option>
+        <option value="E10+">E10+ (Everyone 10+)</option>
+        <option value="T">T (Teen)</option>
+        <option value="M">M (Mature)</option>
+        <option value="AO">AO (Adults Only)</option>
+        </select><br><br>
+
+    <label>What Console Does This Belong To?</label>
+    <select name="console_id">
+        <% current_user.consoles.each do |console| %>
+            <option value=<%= console.id %>><%= console.name %></option>
+        <% end %>
+    </select><br><br>
 
     <input type="submit" value="Create Game">
-
-End Form
+</form>

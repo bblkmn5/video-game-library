@@ -1,3 +1,16 @@
+<h2>Your Games</h2>
+
+<% if Game.all.empty? %>
+    <p>You have no games! <a href="/games/new">Create a New Game</a></p>
+<% else %>
+    <% @games.each do |game| %>
+        <p><a href="/games/<%= @game.id %>"><%= game.name %></p>
+        <p>Rating: <%= game.esrb_rating %></p>
+        <a href="/games/<%= @game.id %>/edit">Edit Game</a><br>
+    <% end %>
+
+<% end %>
+
 Loop over current game directory, and print out:
     Game.name
     Game.esrb_rating
