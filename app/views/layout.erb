@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+    <head>
+        <meta charset="utf-8">
+        <title>Video Game Library</title>
+    </head>
+    <body>
+        <h1>Welcome to the Video Game Library!</h1>
+        <div>
+            <% if logged_in? %>
+                View Library(console) link
+                View Games link
+                Add Console link
+                Add Game link
+                Logout link
+                <h4>Welcome to your Video Game Library, (Username)</h4>
+            
+            <% else %>
+                Sign Up link
+                Login/Sign In link
+            <% end %>
+        </div>
+
+        <% yield %>
+
+        Error Message location?
+
+    </body>
+</html>
