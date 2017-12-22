@@ -1,20 +1,30 @@
-<h2>Edit Game.name</h2>
+<h2>Edit <%= @game.name %></h2>
 
-Form to post edit to game by id
-
+<form method="post" action="/games/<%= @game.id %>">
     <label>Game Name:</label>
-    <input type="text" name="name" value="current game name">
+    <input type="text" name="name" value="<%= @game.name %>"><br>
 
     <label>Game Rating:</label>
-    Select Game's ESRB Rating (list), and show/have selected current rating
+    <select name="esrb_rating" value="<%= @game.esrb_rating %>">
+        <option value="EC">EC (Early Childhood)</option>
+        <option value="E">E (Everyone)</option>
+        <option value="E10+">E10+ (Everyone 10+)</option>
+        <option value="T">T (Teen)</option>
+        <option value="M">M (Mature)</option>
+        <option value="AO">AO (Adults Only)</option>
+    </select><br><br>
 
     <label>Which Console does this belong to?</label>
-    Select Game's console it belongs to. Show/have selected current console it belongs to.
+    <select name="console_id">
+        <% current_user.consoles.each do |console| %>
+            <option value="<%= console.id %>" <%= "selected" if console.id == @game.console.id %>> <%= console.name %></option>
+        <% end %>
+    </select>
 
     <input type="submit" value="Update Game">
-End Form
+</form>
 
-<form method="delete" action="/games/<%= @game.id %>/delete">
+<form method="post" action="/games/<%= @game.id %>/delete">
     <input type="hidden" id="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Game">
 </form>

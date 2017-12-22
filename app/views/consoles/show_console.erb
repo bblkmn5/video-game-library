@@ -3,8 +3,9 @@
 
 <h3>Games</h3>
 
-Show each Game's name and ESRB rating
-
-<br>
-<a href="/consoles/<%= @console.id %>/edit">Edit</a><br>
+<% @console.games.each do |game| %>
+    <a href="/games/<%= game.id %>"><%= game.name %></a><br>
+    Rating: <%= game.esrb_rating %><br><br>
+<% end %><br><br>
+<a href="/consoles/<%= @console.id %>/edit">Edit Console</a><br>
 <br>

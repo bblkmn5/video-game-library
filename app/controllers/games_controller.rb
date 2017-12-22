@@ -57,7 +57,11 @@ class GamesController < ApplicationController
     get '/games/:id/edit' do
         if logged_in?
             @game = Game.find(params[:id])
-            erb :'/games/edit_game'
+            if @game.console.user_id == current_user.id
+                erb :'/games/edit_game'
+            else
+                erb :'/games'
+            end
         else
             redirect '/login'
         end
@@ -65,9 +69,9 @@ class GamesController < ApplicationController
 
     delete '/games/:id/delete' do
         if logged_in?
-            game = Game.find(params[:id])
+            game = Game.find_by_id(params[:id])
             binding.pry
-            if game.user == current_user
+            if game.console.user_id == current_user.id
                game.destroy
                 redirect '/games'
             else

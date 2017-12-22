@@ -5,6 +5,6 @@
 <% else %>
     <% @consoles.each do |console| %>
         <p><a href="/consoles/<%= console.id %>"><%= console.name %></a>
-        Manufactured by: <%= console.company %></p><br>
+        Manufactured by: <%= console.company %></p>
     <% end %>
 <% end %>

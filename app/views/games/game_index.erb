@@ -4,15 +4,9 @@
     <p>You have no games! <a href="/games/new">Create a New Game</a></p>
 <% else %>
     <% @games.each do |game| %>
-        <p><a href="/games/<%= @game.id %>"><%= game.name %></p>
-        <p>Rating: <%= game.esrb_rating %></p>
-        <a href="/games/<%= @game.id %>/edit">Edit Game</a><br>
+        <a href="/games/<%= game.id %>"><%= game.name %></a><br>
+        Rating: <%= game.esrb_rating %><br>
+        For the <%= game.console.name %><br><br>
     <% end %>
 
 <% end %>
-
-Loop over current game directory, and print out:
-    Game.name
-    Game.esrb_rating
-    Game.console
-    link to edit game by game.id
