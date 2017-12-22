@@ -1,7 +1,7 @@
-<h2>Your Consoles</h2>
+<h2>All Consoles</h2>
 
 <% if Console.all.empty? %>
-    <p>You have no consoles yet! <a href="/consoles/new">Create a Console</a></p>
+    <p>There are no consoles! <a href="/consoles/new">Create a Console</a></p>
 <% else %>
     <% @consoles.each do |console| %>
         <p><a href="/consoles/<%= console.id %>"><%= console.name %></a>

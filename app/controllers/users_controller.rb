@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
        @user = User.find(params[:id])
        if !@user.nil? && @user == current_user
-        erb :'/consoles/console_index'
+        erb :'/users/user_library'
        else
         redirect '/consoles'
        end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     get '/login' do
         if logged_in?
-            redirect "/users/#{@user.id}"
+            redirect "/consoles"
         else
             erb :'/users/login'
         end

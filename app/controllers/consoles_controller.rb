@@ -2,7 +2,8 @@ class ConsolesController < ApplicationController
     get '/consoles' do
         if logged_in?
             @consoles = Console.all
-            erb :'/consoles/console_index'
+            @user = current_user
+            erb :'/users/user_library'
         else
             redirect '/login'
         end

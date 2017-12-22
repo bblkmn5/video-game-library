@@ -1,7 +1,7 @@
-<h2>Your Games</h2>
+<h2>All Games</h2>
 
 <% if Game.all.empty? %>
-    <p>You have no games! <a href="/games/new">Create a New Game</a></p>
+    <p>There are no games! <a href="/games/new">Create a New Game</a></p>
 <% else %>
     <% @games.each do |game| %>
         <a href="/games/<%= game.id %>"><%= game.name %></a><br>

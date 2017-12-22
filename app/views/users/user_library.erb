@@ -1,0 +1,10 @@
+<p><%= @user.username %>, here are your consoles</p>
+
+<% if @user.consoles.empty? %>
+    <p>You have no consoles yet! <a href="/consoles/new">Create a Console</a></p>
+<% else %>
+    <% @user.consoles.each do |console| %>
+        <p><a href="/consoles/<%= console.id %>"><%= console.name %></a>
+        Manufactured by: <%= console.company %></p>
+    <% end %>
+<% end %>
