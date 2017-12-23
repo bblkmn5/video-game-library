@@ -5,14 +5,13 @@
         <title>Video Game Library</title>
     </head>
     <body>
-        <h1>Welcome to the Video Game Library!</h1>
         <div>
             <% if logged_in? %>
                 <a href="/consoles">View Your Library</a>
                 <a href="/consoles/new">Add Console</a>
                 <a href="/games/new">Add Game</a>
                 <a href="/logout">Log Out</a>
-                <h4>Welcome to your Video Game Library, <%= current_user.username %></h4>
+                <h2>Welcome to your Video Game Library, <%= current_user.username %></h2>
             
             <% else %>
                 <a href="/signup">Sign Up</a>

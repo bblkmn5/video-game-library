@@ -1,11 +1,11 @@
 <h2><%= @console.name %></h2>
 <h4>Manufactured by: <%= @console.company %></h4>
-
+<a href="/consoles/<%= @console.id %>/edit">Edit Console</a><br><br>
 <h3>Games</h3>
 
 <% @console.games.each do |game| %>
     <a href="/games/<%= game.id %>"><%= game.name %></a><br>
     Rating: <%= game.esrb_rating %><br><br>
 <% end %><br><br>
-<a href="/consoles/<%= @console.id %>/edit">Edit Console</a><br>
+
 <br>

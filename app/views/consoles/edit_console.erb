@@ -2,13 +2,32 @@
 
 <form method="post" action="/consoles/<%= @console.id %>">
     <label>Console Name</label>
-    <input type="text" name="name" value="<%= @console.name %>"><br>
-    <label>Console Company</label>
-    <input type="text" name="company" value="<%= @console.company %>"><br>
+    <select name="consoles">
+        <option value="Nintendo DS;Nintendo DSi;Nintendo 3DS">Nintendo DS/DSi/3DS</option>
+        <option value="Nintendo 64">Nintendo 64</option>
+        <option value="PlayStation 3">PlayStation 3</option>
+        <option value="PlayStation 4">PlayStation 4</option>
+        <option value="PSP;PS Vita">PlayStation Vita/PSP</option>
+        <option value="Nintendo Switch">Nintendo Switch</option>
+        <option value="Wii">Wii</option>
+        <option value="Wii U">Wii U</option>
+        <option value="Linux;Macintosh;PC DVD;PC DVD-ROM;Windows CE;Windows PC;Windows 8 App">Windows/Mac</option>
+        <option value="Xbox 360">Xbox 360</option>
+        <option value="Xbox One">Xbox One</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    <label>Console Company: Current(<%= @console.company %>)</label><br>
+    <select name="company">
+        <option value="Nintendo">Nintendo</option>
+        <option value="Microsoft">Microsoft</option>
+        <option value="Sony">Sony</option>
+        <option value="Other">Other</option>
+    </select><br><br>
 
     <input type="submit" value="Update Console">
-</form>
+</form><br>
 <form method="post" action="/consoles/<%= @console.id %>/delete">
     <input type="hidden" id="hidden" name="_method" value="Delete">
-    <input type="submit" value="delete console">
+    <input type="submit" value="Delete Console">
 </form>
