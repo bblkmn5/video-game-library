@@ -70,7 +70,7 @@ class GamesController < ApplicationController
     delete '/games/:id/delete' do
         if logged_in?
             game = Game.find_by_id(params[:id])
-            binding.pry
+            #binding.pry
             if game.console.user_id == current_user.id
                game.destroy
                 redirect '/games'
