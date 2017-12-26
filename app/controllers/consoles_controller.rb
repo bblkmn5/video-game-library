@@ -5,7 +5,7 @@ class ConsolesController < ApplicationController
             @user = current_user
             erb :'/users/user_library'
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -13,13 +13,13 @@ class ConsolesController < ApplicationController
         if logged_in?
             erb :'/consoles/create_console'
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
     post '/consoles' do
         if params[:name] == "" || params[:company] == ""
-            redirect '/consoles'
+            redirect '/consoles?error=invalid console'
         else
             @console = Console.create(params)
             @console.user_id = current_user.id
@@ -33,7 +33,7 @@ class ConsolesController < ApplicationController
             @console = Console.find(params[:id])
             erb :'/consoles/show_console'
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -44,10 +44,10 @@ class ConsolesController < ApplicationController
                 @console.update(params.select {|c| c == "name" || c == "company"})
                 redirect "/consoles/#{@console.id}"
             else
-                redirect '/consoles'
+                redirect '/consoles?error=invalid console'
             end
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -56,7 +56,7 @@ class ConsolesController < ApplicationController
             @console = Console.find(params[:id])
             erb :"/consoles/edit_console"
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -68,10 +68,10 @@ class ConsolesController < ApplicationController
                 console.destroy
                 redirect '/consoles'
             else
-                redirect "/consoles/#{console.id}"
+                redirect "/consoles/#{console.id}?error=that is not your console!"
             end
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 

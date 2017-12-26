@@ -1,9 +1,9 @@
-<h2>All Games</h2>
+<h2><%= @user.username %>'s Games</h2>
 
-<% if Game.all.empty? %>
+<% if @user.games.empty? %>
     <p>There are no games! <a href="/games/new">Create a New Game</a></p>
 <% else %>
-    <% @games.each do |game| %>
+    <% @user.games.each do |game| %>
         <a href="/games/<%= game.id %>"><%= game.name %></a><br>
         Rating: <%= game.esrb_rating %><br>
         For the <%= game.console.name %><br><br>

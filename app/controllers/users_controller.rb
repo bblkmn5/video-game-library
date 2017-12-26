@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     post '/signup' do
         if params[:username] == "" || params[:password] == "" || params[:email] == ""
-            redirect '/signup'
+            redirect '/signup?error=invalid signup information'
         else
             @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email])
             session[:user_id] = @user.id
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/consoles'
         else
-            redirect '/signup'
+            redirect '/signup?error=invalid login_please signup'
         end
     end
 

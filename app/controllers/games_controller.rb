@@ -3,9 +3,10 @@ class GamesController < ApplicationController
     get '/games' do
         if logged_in?
             @games = Game.all
+            @user = current_user
             erb :'/games/game_index'
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -14,7 +15,7 @@ class GamesController < ApplicationController
             @consoles = Console.all
             erb :'/games/create_game'
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -23,20 +24,20 @@ class GamesController < ApplicationController
             @game = Game.find(params[:id])
             erb :'/games/show_game'
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
     post '/games' do
         if logged_in?
             if params[:name] == "" || params[:esrb_rating] == ""
-                redirect '/games'
+                redirect '/games?error=invalid game'
             else
                 @game = Game.create(params)
                 redirect "/games/#{@game.id}"
             end
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -47,10 +48,10 @@ class GamesController < ApplicationController
                 @game.update(params.select {|g| g == "name" || g == "esrb_rating" || g == "console_id"})
                 redirect "/games/#{@game.id}"
             else
-                redirect '/games'
+                redirect '/games?error=invalid game'
             end
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -60,10 +61,10 @@ class GamesController < ApplicationController
             if @game.console.user_id == current_user.id
                 erb :'/games/edit_game'
             else
-                erb :'/games'
+                redirect '/games'
             end
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
 
@@ -73,12 +74,12 @@ class GamesController < ApplicationController
             #binding.pry
             if game.console.user_id == current_user.id
                game.destroy
-                redirect '/games'
+                redirect '/games?error=that is not your game!'
             else
                 redirect "/games/#{game.id}"
             end
         else
-            redirect '/login'
+            redirect '/login?error=you must be logged in to do that'
         end
     end
     
