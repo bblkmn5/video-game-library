@@ -1,13 +1,13 @@
 # Specifications for the Sinatra Assessment
 
 Specs:
-- [x] Use Sinatra to build the app 
+- [x] Use Sinatra to build the app
 #used sinatra-activerecord gem, RESTful routes for Sinatra::Base.
 
-- [x] Use ActiveRecord for storing information in a database 
+- [x] Use ActiveRecord for storing information in a database
 #used sinatra-activerecord gem, and ActiveRecord::Migrate for database tables and ActiveRecord::Base for controller routes.
 
-- [x] Include more than one model class (list of model class names e.g. User, Post, Category) 
+- [x] Include more than one model class (list of model class names e.g. User, Post, Category)
 #User, Console, Game model classes
 
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
@@ -25,9 +25,11 @@ Specs:
 - [x] Include user input validations
 #when signing up, validates that all fields are filled in. In addition, checks for empty fields when creating new game or console.
 
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
+#shows error message in redirected URL when requirements not filled in, or when current_user is not the creator of console or game.
 
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+#README has description and install instructions, and CONTRIBUTORS and LICENSE have own files
 
 Confirm
 - [ ] You have a large number of small Git commits
