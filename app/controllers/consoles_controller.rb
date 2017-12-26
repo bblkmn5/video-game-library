@@ -63,7 +63,7 @@ class ConsolesController < ApplicationController
     delete '/consoles/:id/delete' do
         if logged_in?
             console = Console.find(params[:id])
-            binding.pry
+            # binding.pry
             if console.user_id == current_user.id
                 console.destroy
                 redirect '/consoles'
