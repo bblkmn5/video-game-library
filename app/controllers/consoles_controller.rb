@@ -21,7 +21,7 @@ class ConsolesController < ApplicationController
         if params[:name] == "" || params[:company] == ""
             redirect '/consoles?error=invalid console'
         else
-            @console = Console.create(params)
+            @console = Console.find_or_create_by(params)
             @console.user_id = current_user.id
             @console.save
             redirect "/consoles/#{@console.id}"

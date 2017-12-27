@@ -33,7 +33,7 @@ class GamesController < ApplicationController
             if params[:name] == "" || params[:esrb_rating] == ""
                 redirect '/games?error=invalid game'
             else
-                @game = Game.create(params)
+                @game = Game.find_or_create_by(params)
                 redirect "/games/#{@game.id}"
             end
         else
