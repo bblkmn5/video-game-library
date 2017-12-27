@@ -8,15 +8,18 @@ INSTALLATION
 Download the repo, cd into the directory, then run
 
 ```bundle install
-rake db:migrate```
+rake db:migrate
+```
 
 And then run either:
 
-```shotgun```
+```shotgun
+```
 
 or:
 
-```rackup config.ru ```
+```rackup config.ru
+```
 
 and point your browser to the address given (such as 127.0.0.1:9393 or localhost:9393)
 
