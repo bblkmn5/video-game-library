@@ -6,6 +6,7 @@
 
     <label>Game Rating:</label>
     <select name="esrb_rating" value="<%= @game.esrb_rating %>">
+        <option selected><%= @game.esrb_rating %></option>
         <option value="EC">EC (Early Childhood)</option>
         <option value="E">E (Everyone)</option>
         <option value="E10+">E10+ (Everyone 10+)</option>

@@ -3,6 +3,7 @@
 <form method="post" action="/consoles/<%= @console.id %>">
     <label>Console Name</label>
     <select name="name">
+        <option selected><%= @console.name %></option>
         <option value="Nintendo DS/DSi/3DS">Nintendo DS/DSi/3DS</option>
         <option value="Nintendo 64">Nintendo 64</option>
         <option value="PlayStation 3">PlayStation 3</option>
@@ -17,8 +18,9 @@
         <option value="Other">Other</option>
     </select><br><br>
 
-    <label>Console Company: Current(<%= @console.company %>)</label><br>
+    <label>Console Company:</label><br>
     <select name="company">
+        <option selected><%= @console.company %></option>
         <option value="Nintendo">Nintendo</option>
         <option value="Microsoft">Microsoft</option>
         <option value="Sony">Sony</option>
