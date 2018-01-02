@@ -18,10 +18,12 @@ class ConsolesController < ApplicationController
     end
 
     post '/consoles' do
-        if params[:name] == "" || params[:company] == ""
-            redirect '/consoles?error=invalid console'
+        @user = current_user
+        console = @user.consoles.find_by(params)
+        if @user.consoles.include?(console)
+            redirect '/consoles?error=you already have this console!'
         else
-            @console = Console.find_or_create_by(params)
+            @console = Console.create(params)
             @console.user_id = current_user.id
             @console.save
             redirect "/consoles/#{@console.id}"

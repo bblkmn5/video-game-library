@@ -18,6 +18,12 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/users/test' do
+        current_user
+        current_user
+        current_user
+    end
+
     get '/users/:id' do
        if logged_in?
         redirect '/consoles'
