@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-    
+
     get '/games' do
         if logged_in?
             @games = Game.all
@@ -74,14 +74,14 @@ class GamesController < ApplicationController
             #binding.pry
             if game.console.user_id == current_user.id
                game.destroy
-                redirect '/games?error=that is not your game!'
+               redirect "/games/#{game.id}"
             else
-                redirect "/games/#{game.id}"
+                redirect '/games?error=that is not your game!'
             end
         else
             redirect '/login?error=you must be logged in to do that'
         end
     end
-    
+
 
 end
